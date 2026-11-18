@@ -21,7 +21,12 @@ const USER_KEY = 'sgie_user';
 function getAppRoot() {
     if (typeof window === 'undefined') return './';
     const path = window.location.pathname;
-    if (path.includes('/usuarios/') || path.includes('/eventos/') || path.includes('/inscricao/')) {
+    if (
+        path.includes('/usuarios/') ||
+        path.includes('/eventos/') ||
+        path.includes('/inscricao/') ||
+        path.includes('/pagamento/')
+    ) {
         return '../';
     }
     return './';

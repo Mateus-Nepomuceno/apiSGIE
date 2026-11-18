@@ -55,8 +55,15 @@ document.addEventListener('DOMContentLoaded', async () => {
                 if (data.status === 'lista_espera') {
                     showAlert('mensagem-alerta', 'As vagas acabaram, mas você foi adicionado à lista de espera!');
                 } else if (data.status === 'pendente_pagamento') {
-                    showAlert('mensagem-alerta', 'Inscrição registrada! Redirecionando para pagamento...');
-                    window.location.href = '/usuarios/perfil.html';
+                    showAlert(
+                        'mensagem-alerta',
+                        'Inscrição registrada! Redirecionando para pagamento...',
+                        'success'
+                    );
+                
+                    window.location.href = resolveAppUrl(
+                        `pagamento/pagamento.html?evento=${eventoId}&inscricao=${data.inscricao_id}`
+                    );
                 } else {
                     showAlert('mensagem-alerta', 'Inscrição confirmada com sucesso!');
                     window.location.href = '/usuarios/perfil.html';
